@@ -18,9 +18,6 @@ const Home: React.FC = () => {
         setTitle(title + '流程')
         setSelectedTab(key)
     }
-    useEffect(() => {
-        get_weather()
-    }, [])
     const get_weather = async() => {
         let position = window.sessionStorage.getItem('position')
         if (!position) {
@@ -28,10 +25,13 @@ const Home: React.FC = () => {
         }
         const location = JSON.parse(position)
         setPosition(location.city)
-        console.log()
         let data = await getWeather(location.lng + ',' + location.lat)
         setWeather(data.data.now)
     }
+    useEffect(() => {
+        get_weather()
+    }, [])
+    
 	return (
 		<div>
 			<PublicHeader title={title} />
