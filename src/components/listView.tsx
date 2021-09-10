@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { PullToRefresh, Card, WingBlank, WhiteSpace } from 'antd-mobile'
+import { useHistory } from "react-router-dom";
 import { getHomeData } from '../api'
 
 interface Params {
@@ -10,6 +11,7 @@ interface DataType {
 }
 
 const List: React.FC<Params> = (props) => {
+    const history = useHistory();
 	const [refreshing, setRefreshing] = useState(false)
 	const [data, setData] = useState<DataType[]>([])
 
@@ -20,6 +22,10 @@ const List: React.FC<Params> = (props) => {
 	useEffect(() => {
 		init()
 	}, [])
+
+    const goDetailPage = () => {
+        history.push('/detilPage')
+    }
 
 	return (
 		<div>
@@ -44,7 +50,7 @@ const List: React.FC<Params> = (props) => {
 				{data.map((i) => (
 					<WingBlank size="lg" key={i.id}>
 						<WhiteSpace size="lg" />
-						<Card>
+						<Card onClick={goDetailPage}>
 							<Card.Header
 								title={i.current_node}
 								extra={i.flow_name}

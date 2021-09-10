@@ -2,5 +2,6 @@
 import { lazy } from 'react'
 
 const Home = lazy(() => import('./home'))
+const DetailPage = lazy(() => import('./detailPage'))
 
-export { Home }
+export { Home, DetailPage }

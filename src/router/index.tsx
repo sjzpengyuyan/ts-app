@@ -1,18 +1,26 @@
-import { Home } from '../pages'
+import { Home, DetailPage } from '../pages'
 
-export type RouterType = {
+interface RouterType  {
 	path: string
 	component: React.LazyExoticComponent<any>
 	root: string[]
 	notExect?: boolean
 }
 
-const HomeRouter: RouterType = {
-	path: '/home',
-	component: Home,
-	root: [],
-}
+const HomeRouter: Array<RouterType> = [
+    {
+        path: '/home',
+        component: Home,
+        root: [],
+    },
+    {
+        path: '/detilPage',
+        component: DetailPage,
+        root: [],
+    }
+]
+
 // 总路由
-const Routers: RouterType[] = [HomeRouter]
+const Routers: RouterType[] = HomeRouter
 
 export { Routers }
